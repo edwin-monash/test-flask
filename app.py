@@ -1,32 +1,31 @@
 import os
-
-from flask import (Flask, redirect, render_template, request,
-                   send_from_directory, url_for)
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
 
-
+# Route for the landing page (index)
 @app.route('/')
 def index():
-   print('Request for index page received')
-   return render_template('index.html')
+    print('Request for index page received')
+    return render_template('index.html')
 
+# Route for the favicon
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/hello', methods=['POST'])
-def hello():
-   name = request.form.get('name')
+# Route for the SustainScore page
+@app.route('/sustainscore')
+def sustainscore():
+    print('Request for SustainScore page received')
+    return render_template('sustainscore.html')
 
-   if name:
-       print('Request for hello page received with name=%s' % name)
-       return render_template('hello.html', name = name)
-   else:
-       print('Request for hello page received with no name or blank name -- redirecting')
-       return redirect(url_for('index'))
-
+# Route for the comparison page
+@app.route('/compare')
+def compare():
+    print('Request for compare page received')
+    return render_template('compare.html')
 
 if __name__ == '__main__':
-   app.run()
+    app.run(debug=True)

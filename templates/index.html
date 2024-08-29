@@ -1,30 +1,39 @@
-<!doctype html>
-<head>
-    <title>Hello Azure - Python Quickstart</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-</head>
-<html>
-   <body>
-     <main>
-        <div class="px-4 py-3 my-2 text-center">
-            <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
-            <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-            <h1 class="display-6 fw-bold text-primary">Welcome to Azure</h1>            
-          </div>
-        <form method="post" action="{{url_for('hello')}}">
-            <div class="col-md-6 mx-auto text-center">
-                <label for="name" class="form-label fw-bold fs-5">Could you please tell me your name?</label>
+{% extends "base.html" %}
 
-                <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                    <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;">
-                  </div>            
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-                  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Say Hello</button>
-                </div>            
-            </div>
-        </form>
-     </main>      
-   </body>
-</html>
+{% block title %}Home - SustainABode{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="px-4 py-5 my-5 text-center">
+  <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/home-image.jpeg') }}" alt="Sustainable Home" style="max-width: 100%; height: auto; border-radius: 10px;">
+  <h1 class="display-5 fw-bold">Discover a sustainable suburb for your next home</h1>
+  <p class="lead mb-4">Align your home with your eco-values</p>
+  <a href="{{ url_for('sustainscore') }}" class="btn btn-success btn-lg px-4 gap-3">Explore</a>
+</div>
+
+<!-- Suburb-Wise Sustainability Score Section -->
+<div class="row align-items-center my-5">
+  <div class="col-lg-6">
+    <img class="img-fluid rounded mb-4" src="{{ url_for('static', filename='images/overallmap.png') }}" alt="Sustainability Map">
+  </div>
+  <div class="col-lg-6">
+    <h2 class="fw-bold">Find the suburb that best fits your criteria of sustainable living</h2>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <a href="{{ url_for('sustainscore') }}" class="btn btn-success btn-lg px-4 gap-3">Find Out More</a>
+  </div>
+</div>
+
+<!-- Compare Section -->
+<div class="row align-items-center my-5 text-center">
+  <h2 class="fw-bold mb-4">Compare & Contrast: Find the Greener Choice</h2>
+  <div class="col-md-6">
+    <img class="img-fluid rounded mb-4" src="{{ url_for('static', filename='images/comparemap1.png') }}" alt="Map Comparison 1">
+  </div>
+  <div class="col-md-6">
+    <img class="img-fluid rounded mb-4" src="{{ url_for('static', filename='images/comparemap2.png') }}" alt="Map Comparison 2">
+  </div>
+  <div class="col-12">
+    <a href="{{ url_for('compare') }}" class="btn btn-success btn-lg px-4 gap-3">Compare</a>
+  </div>
+</div>
+{% endblock %}
