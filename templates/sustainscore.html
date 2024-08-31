@@ -4,4 +4,14 @@
 
 {% block content %}
 
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZWpvczAwMDgiLCJhIjoiY2x6aWE2aXJtMGNuNTJwb3B4cmY5cGc0dCJ9.YglcmpVEfBIHdKUmERis_w';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+</script>
+
+
 {% endblock %}
